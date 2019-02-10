@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Bulletin de salaire",
+    "date": "11/12/2018",
+    "categorie": "PAIE",
+    "description": "",
+    "urlFile": "local.com",
+    "expired": true,
+    "dateExpiration": "11/12/2022"
+  },
+  {
+    "name": "Facture",
+    "date": "11/11/2016",
+    "categorie": "Facture",
+    "description": "",
+    "urlFile": "fact.com",
+    "expired": false,
+    "dateExpiration": null
+  }
+]

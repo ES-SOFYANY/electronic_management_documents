@@ -1,0 +1,133 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: electronic_management_documents
+  description: Electronic Management Documents
+basePath: /api/v1
+tags:
+  - name: Documents
+    description: Simple documents endpoints
+  - name: Specification
+    description: The swagger API specification
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+
+definitions:
+  Document:
+    type: object
+    title: document
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        example: fiche de paie
+
+paths:
+  /documents:
+    get:
+      tags:
+        - Documents
+      description: Fetch documents
+      responses:
+        200:
+          description: Returns documents
+    post:
+      tags:
+        - Documents
+      description: Create a new document
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: formData
+          name: file
+          type: file
+          required: true
+          description: The file to upload.
+        - in: formData
+          name: document
+          type: string
+          required: false
+          description: Description of file contents.
+      responses:
+        200:
+          description: Returns document
+
+  /documents/{id}:
+    get:
+      tags:
+        - Document
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the document to retrieve
+          type: string
+      responses:
+        200:
+          description: Return the document with the specified id
+        404:
+          description: Document not found
+    put:
+      tags:
+        - Document
+      description: update a  document
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the document to retrieve
+          type: string
+        - name: document
+          in: body
+          description: save document
+          required: true
+          schema:
+            $ref: "#/definitions/Document"
+      responses:
+        200:
+          description: Returns document
+    patch:
+      tags:
+        - Document
+      description: update a  document
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the document to retrieve
+          type: string
+        - name: document
+          in: body
+          description: save document
+          required: true
+          schema:
+            $ref: "#/definitions/Document"
+      responses:
+        200:
+          description: Returns document
+    delete:
+      tags:
+        - Document
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: delete document
+          type: string
+      responses:
+        200:
+          description: delete document
+        404:
+          description: Document not found
+  /spec:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification

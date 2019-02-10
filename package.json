@@ -1,0 +1,78 @@
+{
+  "name": "electronic_management_documents",
+  "version": "0.1.0",
+  "description": "electronic management documents",
+  "private": true,
+  "scripts": {
+    "start": "set PORT=3000 && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "start:server": "node backend/dist/index.js",
+    "compile": "babel backend/server --out-dir backend/dist --delete-dir-on-start --source-maps inline --copy-files",
+    "dev": "nodemon backend/server --exec babel-node --config .nodemonrc.json | pino-pretty",
+    "dev:debug": "nodemon backend/server --exec babel-node --config .nodemonrc.json --inspect | pino-pretty",
+    "test:server": "set NODE_ENV=test&& mocha backend/**/**/**/*.test.js --timeout 12000  --require @babel/register --exit",
+    "test:debug": "set NODE_ENV=test&& mocha backend/**/**/**/*.test.js --require @babel/register --inspect-brk --exit",
+    "lint": "eslint -c backend/.eslintrc.json {backend/server,backend/test}/**",
+    "lint:fix": "eslint --fix -c .eslintrc.json {backend/server,backend/test}/**"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "bootstrap": "^4.2.1",
+    "connected-react-router": "^6.2.2",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "mongoose": "^5.4.4",
+    "multer": "^1.4.1",
+    "pino": "^5.10.2",
+    "popper.js": "^1.14.6",
+    "react": "^16.7.0",
+    "react-datepicker": "^2.0.0",
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.2",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "swagger-express-middleware": "^2.0.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "chai": "^4.1.2",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "fetch-mock": "^7.3.0",
+    "mocha": "^5.0.5",
+    "mock-mongoose": "^7.4.0-r2",
+    "mockgoose": "^8.0.1",
+    "nock": "^10.0.6",
+    "node-mocks-http": "^1.7.3",
+    "nodemon": "^1.18.4",
+    "pino-pretty": "^2.2.2",
+    "react-test-renderer": "^16.7.0",
+    "redux-mock-store": "^1.5.3",
+    "sinon": "^7.2.3",
+    "sinon-chai": "^3.3.0",
+    "supertest": "^3.0.0"
+  },
+  "proxy": "http://localhost:3001",
+  "setupFiles": [
+    "./src/setupTests.js"
+  ]
+}
